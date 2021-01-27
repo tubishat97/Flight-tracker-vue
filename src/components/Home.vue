@@ -1,0 +1,82 @@
+<template>
+    <div>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Flight tracker</a>
+                <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="offcanvas"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <main class="container">
+            <div class="d-flex align-items-center p-3 my-3 text-white bg-dark rounded shadow-sm">
+                <img class="me-3" src="../assets/logo.jpg" alt="" width="48" height="38">
+            </div>
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <b-input-group class="mt-3 mb-3">
+                    <b-input-group-prepend is-text>
+                        <b-icon icon="search"></b-icon>
+                    </b-input-group-prepend>
+                    <b-form-input
+                        @keyup.enter="search"
+                        v-model="flight_number"
+                        placeholder="Enter flight number to search..."
+                    />
+                </b-input-group>
+                <b-table striped hover small :items="results" :fields="fields" v-if="results.length > 0"></b-table>
+                <div v-else> no rows found</div>
+            </div>
+        </main>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Home',
+    data() {
+        return {
+            is_loading: false,
+            flight_number: '',
+            fields: [
+                {
+                    key: 'id',
+                    label: 'ID',
+                    sortable: true,
+                },
+                {
+                    key: 'title',
+                    label: 'Title',
+                    sortable: true,
+                },
+                {
+                    key: 'body',
+                    label: 'Body',
+                    sortable: true,
+                },
+            ],
+            results: [],
+        }
+    },
+    methods: {
+        async search() {
+        }
+    },
+}
+</script>
+
+<style scoped>
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+</style>
