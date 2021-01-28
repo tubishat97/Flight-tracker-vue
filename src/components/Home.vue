@@ -19,11 +19,12 @@
                         <b-icon icon="search"></b-icon>
                     </b-input-group-prepend>
                     <b-form-input
-                        @keyup.enter="search"
+                        @keyup="search"
                         v-model="flight_number"
                         placeholder="Enter flight number to search..."
                     />
                 </b-input-group>
+                {{results}}
                 <b-table striped hover small :items="results" :fields="fields" v-if="results.length > 0"></b-table>
                 <div v-else> no rows found</div>
             </div>
@@ -60,6 +61,9 @@ export default {
     },
     methods: {
         async search() {
+            var results = await this.axios.get(`http://64.227.118.65/api/customer/search?flight_number=${this.flight_number}`);
+            this.results = results.data.data
+
         }
     },
 }
