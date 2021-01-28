@@ -24,7 +24,6 @@
                         placeholder="Enter flight number to search..."
                     />
                 </b-input-group>
-                {{results}}
                 <b-table striped hover small :items="results" :fields="fields" v-if="results.length > 0"></b-table>
                 <div v-else> no rows found</div>
             </div>
@@ -41,18 +40,18 @@ export default {
             flight_number: '',
             fields: [
                 {
-                    key: 'id',
-                    label: 'ID',
+                    key: 'flight_number',
+                    label: 'Flight number',
                     sortable: true,
                 },
                 {
-                    key: 'title',
-                    label: 'Title',
+                    key: 'flight_airline.airline_name',
+                    label: 'Airline',
                     sortable: true,
                 },
                 {
-                    key: 'body',
-                    label: 'Body',
+                    key: 'flight_from_airport.airport_name',
+                    label: 'Airport',
                     sortable: true,
                 },
             ],
