@@ -42,17 +42,47 @@ export default {
                 {
                     key: 'flight_number',
                     label: 'Flight number',
-                    sortable: true,
+                    
                 },
                 {
                     key: 'flight_airline.airline_name',
                     label: 'Airline',
-                    sortable: true,
+                    
                 },
                 {
                     key: 'flight_from_airport.airport_name',
-                    label: 'Airport',
-                    sortable: true,
+                    label: 'From Airport',
+                    
+                },
+                {
+                    key: 'flight_from_airport.airport_city_location',
+                    label: 'From Airport Location',
+                    
+                },
+                {
+                    key: 'flight_to_airport.airport_name',
+                    label: 'To Airport',
+                    
+                },
+                {
+                    key: 'flight_to_airport.airport_city_location',
+                    label: 'To Airport Location',
+                    
+                },
+                {
+                    key: 'flight_airplane.airplane_name',
+                    label: 'Airplane name',
+                    
+                },
+                {
+                    key: 'flight_airplane.airplane_max_seat',
+                    label: 'Airplane max seat',
+                    
+                },
+                {
+                    key: 'flight_airplane.airplane_type',
+                    label: 'Airplane type',
+                    
                 },
             ],
             results: [],
@@ -62,7 +92,6 @@ export default {
         async search() {
             var results = await this.axios.get(`http://64.227.118.65/api/customer/search?flight_number=${this.flight_number}`);
             this.results = results.data.data
-
         }
     },
 }
